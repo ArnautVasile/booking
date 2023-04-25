@@ -69,6 +69,9 @@ namespace euseControler
             // jQuery Validation
             bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
                       "~/Scripts/jquery.validate.min.js"));
+           /* 
+            bundles.Add(new ScriptBundle("~/bundles/main/css").Include(
+                      "~/Content/css/mystyle.css"));*/
             /*
             //Toaster
             bundles.Add(new ScriptBundle("~/bundles/toaster/js").Include(

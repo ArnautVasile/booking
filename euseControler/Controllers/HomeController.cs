@@ -22,7 +22,10 @@ namespace euseControler.Controllers
 
                 return View(u);
             }
-
+            public ActionResult Index2()
+            {
+                return View();
+            }
             public ActionResult Product()
             {
                 var product = Request.QueryString["p"];

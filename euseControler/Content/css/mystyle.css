@@ -1,0 +1,84 @@
+﻿.image-container {
+    display: flex;
+    align-items: center;
+}
+.vertical-images {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    align-self: center;
+    height: 100%; /* adăugare */
+
+}
+
+.vertical-image-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+    .vertical-image-container img {
+        max-height: 100%;
+    }
+
+.same-height {
+    vertical-align: top;
+}
+
+.horizontal-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.same-end {
+    align-self: flex-end;
+}
+
+.second-images {
+    margin-top: 10px;
+    align-self: flex-end;
+}
+
+.object-fit {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    align-self: flex-end;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+.text {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+}
+.collor-class {
+    background-color: #753901;
+}
+@font-face {
+    font-family: 'Algerian';
+    src: url('/Font/AlgerianFont.ttf');
+}
+h1 {
+    color: white;
+    font-family: Algerian;
+    font-size: 4rem;
+}
+

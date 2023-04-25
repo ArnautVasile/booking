@@ -6,74 +6,237 @@
 @using System.Web.Optimization
 @model euseControler.Models.UserData
 
+@*
+    <style>
+        .same-height {
+            height: 354px; /* schimbă valoarea cu înălțimea dorită */
+            width: 400px;
+        }
+
+        .img-fluid.custom-height {
+            height: 500px; /* înlocuiește cu înălțimea dorită */
+        }
+
+
+        .col-md-6.image-col {
+            margin-bottom: 0px; /* modifică valoarea după nevoile tale */
+        }
+
+        .img-fluid.custom-height.img-3 {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px; /* modifică valoarea după nevoile tale */
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 image-col">
+                <img src="~/Image/image1.png" class="img-fluid same-height">
+                <img src="~/Image/image2.png" class="img-fluid same-height">
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 order-md-2 image-col">
+                        <img src="~/Image/image4.png" class="img-fluid same-height">
+                        <img src="~/Image/image5.png" class="img-fluid same-height">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="~/Image/image3.png" class="img-fluid custom-height img-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+*@
+
+@*
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/Image/image1.png" class="img-fluid">
+                <img src="~/Image/image2.png" class="img-fluid">
+            </div>
+            <<div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="~/Image/image3.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="~/Image/image5.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <img src="~/Image/image4.png" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+*@
+
+<!--<link rel="stylesheet" href="@Url.Content("~/Content/css/mystyle.css")" type="text/css" />
+
+<div class="image-container">
+    <img src="~/Image/image1.png" class="same-height image">
+    <img src="~/Image/image2.png" class="same-height image">
+    <div class="vertical-images">
+        <img src="~/Image/image3.png" class="same-end same-height image">-->
+@*<img src="https://via.placeholder.com/600x400" class="object-fit image">
+    <img src="https://via.placeholder.com/200x200" class="same-end same-height image">*@
+<!--</div>
+    <img src="~/Image/image4.png" class="same-height image">
+    <img src="~/Image/image5.png" class="same-height image">
+</div>-->
+<link rel="stylesheet" href="@Url.Content("~/Content/css/mystyle.css")" type="text/css" />
+
+<div class="image-container">
+    <div class="vertical-images">
+        <img src="~/Image/image1.png" class="img-fluid same-height">
+        <img src="~/Image/image2.png" class="img-fluid second-images same-end same-height">
+    </div>
+    <div class="vertical-image-container">
+        <img src="~/Image/image3.png" class="img-fluid same-height">
+    </div>
+    <div class="vertical-images">
+        <img src="~/Image/image4.png" class="img-fluid same-height">
+        <img src="~/Image/image5.png" class="img-fluid second-images same-end same-height">
+    </div>
+</div>
+
+@*<div class="container">
+    <div class="text">
+        SERVICIILE NOASTRE
+    </div>
+</div>*@
+<body class="bg-primary">
+
+    <div class="container">
+        <!-- Continutul paginii -->
+        <h1>Titlul paginii</h1>
+        <p>Aici se află textul paginii.</p>
+    </div>
+
+</body>
+@*<img src="~/Image/image1.png" width="428" height="377" class="image">
+    <br />
+    <br />
+    <img src="~/Image/image2.png" width="428" height="354" class="image">
+*@
+@*<div class="image-container">
+        <div class="column">
+            <img src="~/Image/image1.png" width="428" height="377" class="image">
+        </div>
+        <div class="column">
+            <img src="~/Image/image3.png" width="464" height="755" class="img-fluid">
+        </div>
+        <div class="column">
+            <img src="~/Image/image2.png" width="428" height="354" class="image">
+        </div>
+    </div>*@
+<!--<br />
+<br />
+<div class="image-container">
+    <div class="column">
+<img src="~/Image/image1.png" width="428" height="377" class="image">
+        <img src="~/Image/image3.png" width="464" height="755" class="img-fluid">
+
+    </div>
+    <div class="column">
+        <img src="~/Image/image2.png" width="428" height="354" class="image">
+
+    </div>
+</div>-->
+@*
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/mystyle.css")" type="text/css" />
+    <div class="image-container">
+        <img src="~/Image/image1.png" width="428" height="377" class="image">
+        <img src="~/Image/image3.png" width="464" height="755" class="img-fluid">
+    </div>
+    <br />
+    <br />
+        <img src="~/Image/image2.png" width="428" height="354" class="image">*@
+<!--<div class="container">
 <div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <div id="resultTarget"></div>
-            <table class="table table-bordered table-dark">
-                <thead>
-                    <tr>
-                        <th>PRODUCT</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @using (Html.BeginForm("Product", "Home", FormMethod.Post, new { autocomplete = "off" }))
-                    {
-                        foreach (var prod in Model.Products)
-                        {
-                            <tr>
-                                <td>@prod</td>
-                                <td>
+    <div class="col-sm-6-1">
+        <img src="~/Image/image1.png" width="428" height="377" class="image">
+        <br />
+        <br />
+        <img src="~/Image/image2.png" width="428" height="354" class="image">
+    </div>
+    <div class="col-sm-6">
+        <img src="~/Image/image3.png" width="464" height="755" class="img-fluid">-->
+@*<img src="~/Image/image4.png" class="img-fluid">*@
+<!--</div>
+    </div>
+</div>-->
+<!--<div class="row">
+<div class="col-md-12">
+    <div class="table-responsive">
+        <div id="resultTarget"></div>
+        <table class="table table-bordered table-dark">
+            <thead>
+                <tr>
+                    <--<th>PRODUCT</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>-->
+@* @using (Html.BeginForm("Product", "Home", FormMethod.Post, new { autocomplete = "off" }))
+    {
+        foreach (var prod in Model.Products)
+        {
+            <tr>
+                <td>@prod</td>
+                <td>
 
-                                    <button style="float: right" class="btn btn-primary btn-xs" name="btn"
-                                            type="submit" value="@prod">
-                                        View
-                                    </button>
-                                </td>
-                            </tr>
-                        }
-                    }
+                    <button style="float: right" class="btn btn-primary btn-xs" name="btn"
+                            type="submit" value="@prod">
+                        View
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+*@
 
+@*@using (Ajax.BeginForm("Product", "Home", new AjaxOptions { HttpMethod = "POST",
+        OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
+    {
+        foreach (var prod in Model.Products)
+        {
+            <tr>
+                <td>@prod</td>
+                <td>
+                    @Html.Hidden("btn", prod)
+                    <button style="float: right" class="btn btn-primary btn-xs"
+                            type="submit">View</button>
+                </td>
+            </tr>
+        }
+    }*@
 
-                    @*@using (Ajax.BeginForm("Product", "Home", new AjaxOptions { HttpMethod = "POST",
-                    OnSuccess = "success", OnFailure = "fail", UpdateTargetId = "resultTarget" }))
-                {
-                    foreach (var prod in Model.Products)
-                    {
-                        <tr>
-                            <td>@prod</td>
-                            <td>
-                                @Html.Hidden("btn", prod)
-                                <button style="float: right" class="btn btn-primary btn-xs"
-                                        type="submit">View</button>
-                            </td>
-                        </tr>
-                    }
-                }*@
-
-                </tbody>
+<!--</tbody>
             </table>
             <div id="anim"></div>
         </div>
     </div>
-</div>
+</div>-->
+@*@section Scripts {
+        @Scripts.Render("~/bundles/unobtrusive/js")
 
-@section Scripts {
-    @Scripts.Render("~/bundles/unobtrusive/js")
-
-    <script type="text/javascript">
-        function success(data) {
-            if (data.RedirectUrl) {
-                window.location.href = data.RedirectUrl;
-            } else {
-                $("#resultTarget").text(data.msg);
+        <script type="text/javascript">
+            function success(data) {
+                if (data.RedirectUrl) {
+                    window.location.href = data.RedirectUrl;
+                } else {
+                    $("#resultTarget").text(data.msg);
+                }
             }
-        }
 
-        function fail(data) {
-            $("#resultTarget").text(data);
-        }
+            function fail(data) {
+                $("#resultTarget").text(data);
+            }
 
-    </script>
-}
+        </script>
+    }*@
