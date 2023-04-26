@@ -1,0 +1,9 @@
+C:\Users\HdGam\source\repos\booking\Booking.Domain\bin\Debug\Booking.Domain.dll
+C:\Users\HdGam\source\repos\booking\Booking.Domain\bin\Debug\Booking.Domain.pdb
+C:\Users\HdGam\source\repos\booking\Booking.Domain\bin\Debug\Booking.Helpers.dll
+C:\Users\HdGam\source\repos\booking\Booking.Domain\bin\Debug\Booking.Helpers.pdb
+C:\Users\HdGam\source\repos\booking\Booking.Domain\obj\Debug\Booking.Domain.csproj.AssemblyReference.cache
+C:\Users\HdGam\source\repos\booking\Booking.Domain\obj\Debug\Booking.Domain.csproj.CoreCompileInputs.cache
+C:\Users\HdGam\source\repos\booking\Booking.Domain\obj\Debug\Booking.Domain.csproj.CopyComplete
+C:\Users\HdGam\source\repos\booking\Booking.Domain\obj\Debug\Booking.Domain.dll
+C:\Users\HdGam\source\repos\booking\Booking.Domain\obj\Debug\Booking.Domain.pdb
