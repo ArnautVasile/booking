@@ -69,9 +69,7 @@ body {
     font-weight: bold;
     text-align: center;
 }
-.collor-class {
-    background-color: #753901;
-}
+
 @font-face {
     font-family: 'Algerian';
     src: url('/Font/AlgerianFont.ttf');
