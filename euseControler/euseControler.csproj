@@ -249,6 +249,16 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\themes\StyleSheet1.css" />
     <Content Include="Global.asax" />
+    <Content Include="Image\facebook.png" />
+    <Content Include="Image\image1.png" />
+    <Content Include="Image\image2.png" />
+    <Content Include="Image\image3.png" />
+    <Content Include="Image\image4.png" />
+    <Content Include="Image\image5.png" />
+    <Content Include="Image\insta.png" />
+    <Content Include="Image\twitter.png" />
+    <Content Include="Image\work-1.jpg" />
+    <Content Include="Image\youtube.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -345,7 +355,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
