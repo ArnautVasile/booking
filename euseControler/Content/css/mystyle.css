@@ -1,4 +1,4 @@
-﻿.image-container {
+﻿/*.image-container {
     display: flex;
     align-items: center;
 }
@@ -7,9 +7,9 @@
     flex-direction: column;
     margin-bottom: 0;
     align-self: center;
-    height: 100%; /* adăugare */
+    height: 100%;*/ /* adăugare */
 
-}
+/*}
 
 .vertical-image-container {
     height: 100%;
@@ -73,7 +73,7 @@ body {
 @font-face {
     font-family: 'Algerian';
     src: url('/Font/AlgerianFont.ttf');
-}
+}*/
 
 @font-face {
     font-family: 'Abril';

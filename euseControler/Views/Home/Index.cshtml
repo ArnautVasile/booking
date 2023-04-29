@@ -5,6 +5,7 @@
 
 @using System.Web.Optimization
 @model euseControler.Models.UserData
+@using System.Web.Mvc
 
 <!DOCTYPE html>
 <html>
@@ -35,6 +36,14 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id="content">
+        @Html.Partial("~/Views/Home/Index2.cshtml")
+        @Html.Partial("~/Views/Home/Index3.cshtml")
+        @Html.Partial("~/Views/Shared/_Footer.cshtml")
+
+        @* @include("~/Views/Home/Index2.cshtml")
+        @include("~/Views/Home/Index3.cshtml")*@
     </div>
 </body>
 </html>
