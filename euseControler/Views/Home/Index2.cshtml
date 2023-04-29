@@ -1,134 +1,212 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+}
+
+@using System.Web.Optimization
+@model euseControler.Models.UserData
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="https://fonts.google.com/specimen/Abril+Fatface" rel="stylesheet">
+    @* <link rel="stylesheet" type="text/css" href="~/Content/css/mystyle.css">*@
+<style>
+    @font-face {
+        font-family: 'Abril';
+        src: url('/Font/AbrilFatface-Regular.ttf');
+    }
+
+    body {
+        font-family: 'Abril', sans-serif;
+    }
+</style>
 </head>
 
 <body>
     <style>
         h1 {
-            font-family: 'Algerian';
+            font-family: 'Abril';
+            position: relative;
+            display: inline-block;
+            letter-spacing: 0.3rem;
         }
+
+            h1::after {
+                content: "";
+                position: absolute;
+                bottom: -0.2em; /* ajustați înălțimea liniei în funcție de preferință */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%; /* ajustați lungimea liniei în funcție de preferință */
+                border-bottom: 0.2rem solid black;
+            }
     </style>
 
     <div class="text-center">
-        <h1> SERVICIILE NOASTRE</h1>
+        <h1>SERVICIILE NOASTRE</h1>
     </div>
     <section class="ftco-section ftco-no-pt ftco-no-pb">
         @*<div class="container">
-            <div class="row no-gutters justify-content-center mb-5 pb-2">
-                <div class="col-md-6 text-center heading-section ftco-animate">
-                    <span class="subheading">Gallery</span>
-                    <h2 class="mb-4">Our gallery</h2>
-                    <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="row no-gutters justify-content-center mb-5 pb-2">
+                    <div class="col-md-6 text-center heading-section ftco-animate">
+                        <span class="subheading">Gallery</span>
+                        <h2 class="mb-4">Our gallery</h2>
+                        <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
+
         <style>
             .project {
-                border: 3px solid #6b4c3f;
-                padding: 10px;
-                margin: 20px;
-                box-shadow: 4px 4px 0px #6b4c3f;
+                border: 0.2rem solid #000f;
+                overflow: hidden;
+                position: relative;
+                border-radius: 0.6rem;
             }
+
+            .card.project {
+                border: none;
+                overflow: hidden;
+                position: relative;
+            }
+
+                .card.project .card-img-top {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    padding: 0rem;
+                    margin-top: 0rem;
+                    margin-bottom: -0.5rem;
+                    border-bottom: 0.2rem solid #000f;
+                    padding-bottom: -1rem;
+                    border-radius: 0rem;
+                }
+
+                .card.project::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border: 0.2rem solid #000f;
+                    z-index: 0;
+                    border-radius: 0.6rem;
+                }
         </style>
+
+        <br />
+        <br />
         <div class="container-fluid p-0">
             <div class="row no-gutters">
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="card project">
-                        <img src="~/Image/servicii1.png" class="card-img-top" alt="Colorlib Template">
+                        <img src="~/Image/servicii11.png" class="card-img-top" alt="Colorlib Template">
                         <div class="card-body">
-                            <h3 class="card-title">Frezură</h3>
+                            <h5 class="card-title">Frezură</h5>
                             <div style="display: flex; flex-direction: column;">
-                                <span>Frezură clasică...........200 lei</span>
-                                <span>Frezură copii.............190 lei</span>
+                                <span>Frezură clasică.............................200 lei</span>
+                                <span>Frezură copii................................190 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Image/servicii2.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Mască facială</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Black Mask Classic.....................200 lei</span>
+                                <span>Clay Mask......................................200 lei</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-2.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Haircut</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii3.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Modelarea</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Modelarea bărbii.......................150 lei</span>
+                                <span>Camuflarea bărbii......................100 lei</span>
+                            </div>
                         </div>
-                        <a href="images/work-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-3.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Hairstylist</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii4.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Ras Royal</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Ras-Royal Classic.......................300 lei</span>
+                                <br />
+                            </div>
                         </div>
-                        <a href="images/work-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-4.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Haircut</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii5.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Aranjare</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Aranjarea părului.......................100 lei
+                                </span>
+                                <br />
+                            </div>
                         </div>
-                        <a href="images/work-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-5.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Makeup</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii6.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Complex</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Full Pack.........................................350 lei
+                                </span>
+                                <br />
+                            </div>
                         </div>
-                        <a href="images/work-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-6.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Fashion</span>
-                            <h3><a href="project.html">Model</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii7.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Classic experience.....................200 lei
+                                </span>
+                                <br />
+                            </div>
                         </div>
-                        <a href="images/work-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-7.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Makeup</a></h3>
+                    <div class="card project">
+                        <img src="~/Image/servicii8.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Epilare</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Epilare pe față cu ceară...........100 lei
+                                </span>
+                                <br />
+                            </div>
                         </div>
-                        <a href="images/work-7.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 ftco-animate">
-                    <div class="project">
-                        <img src="images/work-8.jpg" class="img-fluid" alt="Colorlib Template">
-                        <div class="text">
-                            <span>Beauty</span>
-                            <h3><a href="project.html">Makeup</a></h3>
-                        </div>
-                        <a href="images/work-8.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-                            <span class="icon-expand"></span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -136,4 +214,4 @@
     </section>
 
 </body>
-</html >
+</html>

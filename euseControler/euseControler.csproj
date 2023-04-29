@@ -249,6 +249,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\themes\StyleSheet1.css" />
     <Content Include="Global.asax" />
+    <Content Include="Image\BackgroundImage.png" />
     <Content Include="Image\facebook.png" />
     <Content Include="Image\image1.png" />
     <Content Include="Image\image2.png" />
@@ -257,6 +258,15 @@
     <Content Include="Image\image4.png" />
     <Content Include="Image\image6.png" />
     <Content Include="Image\insta.png" />
+    <Content Include="Image\servicii1.png" />
+    <Content Include="Image\servicii11.png" />
+    <Content Include="Image\servicii2.png" />
+    <Content Include="Image\servicii3.png" />
+    <Content Include="Image\servicii4.png" />
+    <Content Include="Image\servicii5.png" />
+    <Content Include="Image\servicii6.png" />
+    <Content Include="Image\servicii7.png" />
+    <Content Include="Image\servicii8.png" />
     <Content Include="Image\twitter.png" />
     <Content Include="Image\work-1.jpg" />
     <Content Include="Image\youtube.png" />
@@ -289,6 +299,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Font\AlgerianFont.ttf" />
+    <Content Include="Font\AbrilFatface-Regular.ttf" />
     <None Include="Scripts\jquery-3.6.3.intellisense.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-3.6.3.js" />
@@ -343,7 +354,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
-    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Index3.cshtml" />
     <Content Include="Scripts\jquery-3.6.3.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.3.min.map" />
     <Content Include="Views\Home\Index2.cshtml" />

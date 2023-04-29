@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Optimization;
+using System.Web.UI.WebControls;
 
 namespace euseControler
 {
@@ -14,8 +15,10 @@ namespace euseControler
             bundles.Add(new StyleBundle("~/bundles/main/css").Include(
                       "~/Content/css/style.css", new CssRewriteUrlTransform()));
 
-             // Animate.css
-             bundles.Add(new StyleBundle("~/bundles/animate/css").Include(
+            /*bundles.Add(new StyleBundle("~/bundles/main/css").Include(
+                      "~/Content/css/style.css", new CssRewriteUrlTransform()));*/
+            // Animate.css
+            bundles.Add(new StyleBundle("~/bundles/animate/css").Include(
                        "~/Content/themes/StyleSheet1.css"));
            
             // Pe-icon-7-stroke
@@ -69,8 +72,8 @@ namespace euseControler
             // jQuery Validation
             bundles.Add(new ScriptBundle("~/bundles/validation/js").Include(
                       "~/Scripts/jquery.validate.min.js"));
-           /* 
-            bundles.Add(new ScriptBundle("~/bundles/main/css").Include(
+            
+            /*bundles.Add(new ScriptBundle("~/bundles/main/css").Include(
                       "~/Content/css/mystyle.css"));*/
             /*
             //Toaster

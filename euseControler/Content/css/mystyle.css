@@ -74,9 +74,14 @@ body {
     font-family: 'Algerian';
     src: url('/Font/AlgerianFont.ttf');
 }
-h1 {
-    color: white;
-    font-family: Algerian;
-    font-size: 4rem;
+
+@font-face {
+    font-family: 'Abril';
+    src: url('/Font/AbrilFatface-Regular.ttf');
 }
+/*h1 {
+    color: white;
+    font-family: Abril;
+    font-size: 4rem;
+}*/
 
