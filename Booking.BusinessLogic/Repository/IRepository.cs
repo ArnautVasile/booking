@@ -12,6 +12,6 @@ namespace Booking.BusinessLogic.Repository
         Task<T> GetById(Guid id);
         void Add(T item);
         void Update(T item);
-        void Delete(T item);
+        void Delete(Guid id);
     }
 }

@@ -55,7 +55,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Migrations\202304291447564_FixFields.cs" />
+    <Compile Include="Migrations\202304291447564_FixFields.designer.cs">
+      <DependentUpon>202304291447564_FixFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304301842030_FixFields2.cs" />
+    <Compile Include="Migrations\202304301842030_FixFields2.designer.cs">
+      <DependentUpon>202304301842030_FixFields2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\BarbershopRepository.cs" />
+    <Compile Include="Repository\BaseUserEntityRepository.cs" />
     <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Migrations\202304180904513_GenerateFirstEntities.cs" />
     <Compile Include="Migrations\202304180904513_GenerateFirstEntities.designer.cs">
@@ -73,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ServiceRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
+    <Compile Include="Repository\UserAppointmentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Booking.BusinessLogic\Booking.BusinessLogic.csproj">
@@ -101,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202304181541352_GenerateFirstEntities3.resx">
       <DependentUpon>202304181541352_GenerateFirstEntities3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304291447564_FixFields.resx">
+      <DependentUpon>202304291447564_FixFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304301842030_FixFields2.resx">
+      <DependentUpon>202304301842030_FixFields2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

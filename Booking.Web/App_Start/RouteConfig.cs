@@ -20,6 +20,12 @@ namespace Booking.Web
             // );
 
             routes.MapRoute(
+               name: "AdminLogin",
+               url: "Admin/Login/",
+               defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "AdminBarbershop",
                 url: "Admin/Barbershop/{id}",
                 defaults: new { controller = "Barbershop", action = "Index", id = UrlParameter.Optional }
@@ -35,6 +41,12 @@ namespace Booking.Web
                name: "AdminService",
                url: "Admin/Service/{id}",
                defaults: new { controller = "ServiceBarbEmp", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+               name: "Booking",
+               url: "booking/{id}",
+               defaults: new { controller = "Booking", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

@@ -1,0 +1,406 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using Booking.Web.Models
+@using Booking.Web.Models.Admin
+@using Booking.Web.Controllers
+@using System.Web.Script.Serialization;
+@model AppointmentBooking
+
+@{
+    var serializer = new JavaScriptSerializer();
+    var Model = serializer.Deserialize<AppointmentBooking>(ViewBag.ModelJson);
+}
+
+<h2>Add Appointment</h2>
+
+
+@using (Html.BeginForm("AddAppointment", "Booking", FormMethod.Post, new { autocomplete = "off" }))
+{
+    <label>Select Barbershop Name:</label>
+    <select name="BarbershopId" id="barbershop-select" onchange="showServicesCategory()">
+        <option value="null">Select Barbershop</option>
+        @foreach (var barbershop in Model.barbershops)
+        {
+            <option value="@barbershop.Id">@barbershop.Name</option>
+        }
+    </select>
+    <br>
+
+    <div id="serviceCategory-content" style="display: none">
+        <label>Select Service Category:</label>
+        <select name="ServiceType" id="serviceCategory-select" onchange="showServicesSubcategory()">
+        </select>
+        <br>
+    </div>
+
+    <div id="serviceSubcategory-content" style="display: none">
+        <label>Select Service Subcategory:</label>
+        <select name="ServiceId" id="serviceSubcategory-select" onchange="showEmployees()">
+        </select>
+        <br>
+    </div>
+
+    <div id="employee-content" style="display: none">
+        <label>Select Employee Name:</label>
+        <select name="EmployeeId" id="employee-select" onchange="showData()">
+        </select>
+        <br>
+    </div>
+
+    <div id="date-content" style="display: none">
+        <label>Select Date:</label>
+        <input type="date" id="date-select" name="Date" onchange="showTime()">
+        <br>
+    </div>
+
+    <div id="time-content" style="display: none">
+        <label>Select Time:</label>
+        <select name="Time" id="time-select" onchange="showForm()">
+        </select>
+        <br>
+    </div>
+
+    <div id="appointmentData-content" style="display: none">
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" name="FirstName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Second Name:</label>
+            <input type="text" name="LastName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Phone number:</label>
+            <input type="text" name="Phone" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Book now</button>
+    </div>
+}
+
+
+<input type="hidden" id="model-json" value="@ViewBag.ModelJson" />
+
+<script>
+    function hideServCateg() {
+        var serviceCategory = document.getElementById("serviceCategory-content");
+        serviceCategory.style.display = "none";
+    }
+
+    function hideServSubcateg() {
+        var serviceSubcategory = document.getElementById("serviceSubcategory-content");
+        serviceSubcategory.style.display = "none";
+    }
+
+    function hideEmployees() {
+        var employeeContent = document.getElementById("employee-content");
+        employeeContent.style.display = "none";
+    }
+
+    function hideDate() {
+        var dateContent = document.getElementById("date-content");
+        dateContent.style.display = "none";
+    }
+
+    function hideTime() {
+        var timeContent = document.getElementById("date-content");
+        timeContent.style.display = "none";
+    }
+
+    function hideForm() {
+        var formContent = document.getElementById("form-content");
+        formContent.style.display = "none";
+    }
+
+    function showServicesCategory() {
+        var barbershopSelect = document.getElementById("barbershop-select");
+        var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
+        var barbershopId = barbershopSelectedOption.value;
+
+        var serviceCategorySelect = document.getElementById("serviceCategory-select");
+
+        serviceCategorySelect.innerHTML = "";
+
+        if (barbershopId === "null") {
+            hideServCateg();
+            hideServSubcateg();
+            hideEmployees();
+            return;
+        }
+
+        var serviceCategoryContent = document.getElementById("serviceCategory-content");
+        serviceCategoryContent.style.display = "block";
+
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
+
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+
+            var option = document.createElement("option");
+            option.value = "null";
+            option.text = "Select Category";
+            serviceCategorySelect.add(option);
+
+            //alert(selectedEmployee.Services[0].ServiceName);
+
+            var uniqueServices = new Set();
+
+            selectedBarbershop.Services.forEach(barbershop => {
+                if (!uniqueServices.has(barbershop.ServiceType)) { // check if the service type is already in the Set
+                    uniqueServices.add(barbershop.ServiceType); // add the service type to the Set
+                    var option = document.createElement("option");
+                    option.value = barbershop.Id;
+                    option.text = barbershop.ServiceType;
+                    serviceCategorySelect.add(option);
+                }
+            });
+
+            //    servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            //   servicesTable.style.display = "none";
+        }
+    }
+
+    function showServicesSubcategory() {
+        var barbershopSelect = document.getElementById("barbershop-select");
+        var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
+        var barbershopId = barbershopSelectedOption.value;
+
+        var categorySelect = document.getElementById("serviceCategory-select");
+        var categorySelectedOption = categorySelect.options[categorySelect.selectedIndex];
+        var categoryName = categorySelectedOption.text;
+
+        var subcategorySelect = document.getElementById("serviceSubcategory-select");
+
+        subcategorySelect.innerHTML = "";
+
+        if (categorySelectedOption.value === "null") {
+            hideServSubcateg();
+            hideEmployees();
+            return;
+        }
+
+        var serviceSubcategoryContent = document.getElementById("serviceSubcategory-content");
+        serviceSubcategoryContent.style.display = "block";
+
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
+
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+
+            var option = document.createElement("option");
+            option.value = "null";
+            option.text = "Select Category";
+            subcategorySelect.add(option);
+
+            selectedBarbershop.Services.forEach(service => {
+                if (service.ServiceType === categoryName) {
+                    var option = document.createElement("option");
+                    option.value = service.Id;
+                    option.text = service.ServiceName;
+                    subcategorySelect.add(option);
+                }
+            });
+        } else {
+            //   servicesTable.style.display = "none";
+        }
+    }
+
+    function showEmployees() {
+        var barbershopSelect = document.getElementById("barbershop-select");
+        var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
+        var barbershopId = barbershopSelectedOption.value;
+
+        var categorySelect = document.getElementById("serviceCategory-select");
+        var categorySelectedOption = categorySelect.options[categorySelect.selectedIndex];
+        var categoryName = categorySelectedOption.text;
+
+        var subcategorySelect = document.getElementById("serviceSubcategory-select");
+        var subcategorySelectedOption = subcategorySelect.options[subcategorySelect.selectedIndex];
+        var subcategoryName = subcategorySelectedOption.text;
+
+        var employeeSelect = document.getElementById("employee-select");
+
+        if (subcategorySelectedOption.value === "null") {
+            hideEmployees();
+            return;
+        }
+
+        var employeeContent = document.getElementById("employee-content");
+        employeeContent.style.display = "block";
+
+        var employeeSelect = document.getElementById("employee-select");
+        employeeSelect.innerHTML = "";
+
+
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
+
+
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+
+            var option = document.createElement("option");
+            option.value = "null";
+            option.text = "Select Employee";
+            employeeSelect.add(option);
+
+            selectedBarbershop.Employees.forEach(employee => {
+
+                var selectedEmployee = Model.employees.find(b => b.Id.toString() === employee.Id);
+                selectedEmployee.Services.forEach(service => {
+                    if (service.ServiceType === categoryName && service.ServiceName === subcategoryName) {
+                        var option = document.createElement("option");
+                        option.value = employee.Id;
+                        option.text = employee.FirstName;
+                        employeeSelect.add(option);
+                    }
+                });
+            });
+
+            //    servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            //   servicesTable.style.display = "none";
+        }
+    }
+
+    function showData() {
+        var dataContent = document.getElementById("date-content");
+        dataContent.style.display = "block";
+
+        var now = new Date();
+        var options = { timeZone: "Europe/Chisinau" };
+        var formattedDate = now.toLocaleDateString(undefined, options);
+
+        var maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 1);
+        maxDate.setDate(now.getDate());
+        maxDate.setHours(0, 0, 0, 0);
+        maxDate.setTime(maxDate.getTime() - maxDate.getTimezoneOffset() * 60 * 1000);
+        var formattedMaxDate = maxDate.toISOString().slice(0, 10);
+
+        var minDate = new Date();
+        minDate.setHours(0, 0, 0, 0);
+        minDate.setTime(minDate.getTime() - minDate.getTimezoneOffset() * 60 * 1000);
+        var formattedMinDate = minDate.toISOString().slice(0, 10);
+
+        document.getElementById("date-select").value = formattedDate;
+        document.getElementById("date-select").min = formattedMinDate;
+        document.getElementById("date-select").max = formattedMaxDate;
+    }
+
+    function showTime() {
+        var timeContent = document.getElementById("time-content");
+        timeContent.style.display = "block";
+
+        var employeeSelect = document.getElementById("employee-select");
+        var employeeSelectedOption = employeeSelect.options[employeeSelect.selectedIndex];
+        var employeeId = employeeSelectedOption.value;
+
+        var dateSelect = document.getElementById("employee-select");
+        var dateSelectedOption = dateSelect.options[dateSelect.selectedIndex];
+        var date = dateSelectedOption.text;
+
+       // var serviceCategorySelect = document.getElementById("serviceCategory-select");
+
+     //   serviceCategorySelect.innerHTML = "";
+
+        //if (barbershopId === "null") {
+        //    hideServCateg();
+        //    hideServSubcateg();
+        //    hideEmployees();
+        //    return;
+       // }
+
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
+
+        // find the selected barbershop from the model
+        //var selectedEmployee = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+        var hoursList = [];
+
+        for (var i = 9; i <= 17; i++) {
+            hoursList.push(i + ":00");
+        }
+
+        Model.appointments.forEach(appointment => {
+            if (appointment.EmploeeId === employeeId && appointment.Date === date)
+            {
+                let indexToRemove = hoursList.findIndex(name => name === appointment.Time);
+
+                if (indexToRemove >= 0) {
+                    hoursList.splice(indexToRemove, 1);
+                }
+            }
+        });
+
+        /*var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+
+        selectedBarbershop.Services.forEach(barbershop => {
+            if (!uniqueServices.has(barbershop.ServiceType)) { // check if the service type is already in the Set
+                uniqueServices.add(barbershop.ServiceType); // add the service type to the Set
+                var option = document.createElement("option");
+                option.value = barbershop.Id;
+                option.text = barbershop.ServiceType;
+                serviceCategorySelect.add(option);
+            }
+        });
+        */
+        /*
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+
+            var option = document.createElement("option");
+            option.value = "null";
+            option.text = "Select Category";
+            serviceCategorySelect.add(option);
+
+            //alert(selectedEmployee.Services[0].ServiceName);
+
+            var uniqueServices = new Set();
+
+            selectedBarbershop.Services.forEach(barbershop => {
+                if (!uniqueServices.has(barbershop.ServiceType)) { // check if the service type is already in the Set
+                    uniqueServices.add(barbershop.ServiceType); // add the service type to the Set
+                    var option = document.createElement("option");
+                    option.value = barbershop.Id;
+                    option.text = barbershop.ServiceType;
+                    serviceCategorySelect.add(option);
+                }
+            });
+
+            //    servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            //   servicesTable.style.display = "none";
+        }
+        */
+    }
+
+    function showForm() {
+        var formContent = document.getElementById("form-content");
+        formContent.style.display = "block";
+    }
+
+</script>
+
+

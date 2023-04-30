@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Entities\Barbershop.cs" />
     <Compile Include="Entities\Service.cs" />
-    <Compile Include="Entities\EmployeeAvailability.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\UserAppointment.cs" />
     <Compile Include="Entities\BaseUserEntity.cs" />

@@ -23,3 +23,5 @@ C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persis
 C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persistance.Migrations.GenerateFirstEntities.resources
 C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persistance.Migrations.GenerateFirstEntities2.resources
 C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persistance.Migrations.GenerateFirstEntities3.resources
+C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persistance.Migrations.FixFields.resources
+C:\Users\HdGam\source\repos\booking\Booking.Persistance\obj\Debug\Booking.Persistance.Migrations.FixFields2.resources

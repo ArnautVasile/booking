@@ -16,6 +16,8 @@ namespace Booking.Persistance.Repository
         public IEmployeeRepository EmployeeRepository  { get; set; }
         public IBarbershopRepository BarbershopRepository  { get; set; }
         public IServiceRepository ServiceRepository  { get; set; }
+        public IUserAppointmentRepository UserAppointmentRepository { get; set; }
+        public IBaseUserEntity BaseUserEntity { get; set; }
 
         public UnitOfWork(DataContext context)
         {
@@ -24,6 +26,8 @@ namespace Booking.Persistance.Repository
             EmployeeRepository = new EmployeeRepository(context);
             BarbershopRepository = new BarbershopRepository(context);
             ServiceRepository = new ServiceRepository(context);
+            UserAppointmentRepository = new UserAppointmentRepository(context);
+            BaseUserEntity = new BaseUserEntityRepository(context);
         }
 
         public void Save()

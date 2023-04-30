@@ -61,3 +61,10 @@ C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Booking.BusinessLogic.dll.co
 C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Booking.Domain.pdb
 C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Booking.Persistance.pdb
 C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Booking.Persistance.dll.config
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Antlr3.Runtime.dll
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Newtonsoft.Json.dll
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\System.Web.Optimization.dll
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\WebGrease.dll
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Antlr3.Runtime.pdb
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\Newtonsoft.Json.xml
+C:\Users\HdGam\source\repos\booking\Booking.Web\bin\System.Web.Optimization.xml

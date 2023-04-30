@@ -1,0 +1,6 @@
+# misc
+.vs
+.idea
+# production
+/bin/*
+/obj/*

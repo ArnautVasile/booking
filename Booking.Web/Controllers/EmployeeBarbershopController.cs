@@ -2,6 +2,7 @@
 using Booking.Domain.Entities;
 using Booking.Persistance.Context;
 using Booking.Persistance.Repository;
+using Booking.Web.Models.Admin;
 using Booking.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-
+using Booking.Web.Filters;
+using Booking.BusinessLogic.Enums;
 
 namespace Booking.Web.Controllers
 {
+    [AccessLevel(UserRole.Employee)]
     public class EmployeeBarbershopController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -66,7 +69,8 @@ namespace Booking.Web.Controllers
                 FirstName = dtoEmployee.FirstName,
                 Username = dtoEmployee.Username,
                 Password = dtoEmployee.Password,
-                BarbershopId = dtoEmployee.BarbershopId
+                BarbershopId = dtoEmployee.BarbershopId,
+                Services = new List<Service>()
             };
 
             _unitOfWork.EmployeeRepository.Add(employee);
@@ -103,16 +107,7 @@ namespace Booking.Web.Controllers
         [HttpPost]
         public Task<ActionResult> DeleteEmployee(EmployeeManager dtoEmployee)
         {
-            var employee = new Employee
-            {
-                Id = dtoEmployee.Id,
-                LastName = dtoEmployee.LastName,
-                FirstName = dtoEmployee.FirstName,
-                Username = dtoEmployee.Username,
-                Password = dtoEmployee.Password
-            };
-
-            _unitOfWork.EmployeeRepository.Delete(employee);
+            _unitOfWork.EmployeeRepository.Delete(dtoEmployee.Id);
             _unitOfWork.Save();
 
             return (Index());
