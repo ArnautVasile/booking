@@ -35,20 +35,12 @@ namespace Booking.Persistance.Repository
 
             return service;
         }
-       
 
         public void Add(Service item)
         {
             _context.Services.Add(item);
         }
 
-        public void Delete(Service item)
-        {
-            var barbershop = _context.Services.Find(item.Id);
-
-            if (barbershop != null)
-                _context.Services.Remove(barbershop);
-        }
 
         public void Update(Service item)
         {
@@ -56,10 +48,18 @@ namespace Booking.Persistance.Repository
 
             if (barbershop != null)
             {
-                barbershop.Name = item.Name;
+                barbershop.ServiceName = item.ServiceName;
                 barbershop.ServiceType = item.ServiceType;
                 _context.SaveChanges();
             }
+        }
+
+        public void Delete(Guid id)
+        {
+            var barbershop = _context.Services.Find(id);
+
+            if (barbershop != null)
+                _context.Services.Remove(barbershop);
         }
     }
 }

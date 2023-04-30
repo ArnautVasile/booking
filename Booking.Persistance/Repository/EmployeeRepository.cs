@@ -41,15 +41,7 @@ namespace Booking.Persistance.Repository
         {
             _context.Employees.Add(item);
         }
-
-        public void Delete(Employee item)
-        {
-            var employee = _context.Employees.Find(item.Id);
-
-            if (employee != null)
-                _context.Employees.Remove(employee);
-        }
-
+        
         public void Update(Employee item)
         {
             var employee = _context.Employees.Find(item.Id);
@@ -64,6 +56,13 @@ namespace Booking.Persistance.Repository
                 employee.BarbershopId = item.BarbershopId;
                 _context.SaveChanges();
             }
+        }
+        public void Delete(Guid id)
+        {
+            var employee = _context.Employees.Find(id);
+
+            if (employee != null)
+                _context.Employees.Remove(employee);
         }
     }
 }

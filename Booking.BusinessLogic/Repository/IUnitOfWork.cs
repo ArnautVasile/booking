@@ -12,6 +12,10 @@ namespace Booking.BusinessLogic.Repository
         IEmployeeRepository EmployeeRepository { get; set; }
         IBarbershopRepository BarbershopRepository { get; set; }
         IServiceRepository ServiceRepository { get; set; }
+        IUserAppointmentRepository UserAppointmentRepository { get; set; }
+
+        IBaseUserEntity BaseUserEntity { get; set; }
+
         void Save();
     }
 }

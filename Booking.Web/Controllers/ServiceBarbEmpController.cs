@@ -48,13 +48,14 @@ namespace Booking.Web.Controllers
                 FirstName = e.FirstName,
                 Username = e.Username,
                 Password = e.Password,
-                BarbershopId = e.BarbershopId
+                BarbershopId = e.BarbershopId,
+                Services = new List<Service>(e.Services)
             }).ToList();
            
             var servicesManager = services.Select(e => new ServiceManager
             {
                 Id = e.Id,
-                ServiceName = e.Name,
+                ServiceName = e.ServiceName,
                 ServiceType = e.ServiceType
             }).ToList();
 
@@ -72,13 +73,13 @@ namespace Booking.Web.Controllers
         }
 
         [HttpPost]
-        public Task<ActionResult> AddService(ServiceManager dtoService)
+        public Task<ActionResult> AddServiceBarbershop(ServiceManager dtoService)
         {
             var service = new Service
             {
                 Id = Guid.NewGuid(),
                 ServiceType = dtoService.ServiceType,
-                Name = dtoService.ServiceName
+                ServiceName = dtoService.ServiceName
             };
 
             _unitOfWork.ServiceRepository.Add(service);
@@ -86,6 +87,54 @@ namespace Booking.Web.Controllers
             _unitOfWork.Save();
 
             return (Index());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UpdateServiceBarbershop(ServiceManager dtoService)
+        {
+            var service = new Service
+            {
+                Id = dtoService.Id,
+                ServiceType = dtoService.ServiceType,
+                ServiceName = dtoService.ServiceName
+            };
+
+            _unitOfWork.ServiceRepository.Update(service);
+            _unitOfWork.Save();
+
+            return (await Index());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteServiceBarbershop(ServiceManager dtoService)
+        {
+            var service = new Service
+            {
+                Id = dtoService.Id,
+                ServiceType = dtoService.ServiceType,
+                ServiceName = dtoService.ServiceName
+            };
+
+            _unitOfWork.ServiceRepository.Delete(dtoService.Id);
+            _unitOfWork.Save();
+
+            return (await Index());
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UpdateEmployeeService(ServiceManager dtoService)
+        {
+            var selectedEmployee = await _unitOfWork.EmployeeRepository.GetById(dtoService.EmployeeId);
+
+            foreach (var id in dtoService.SelectedServices)
+            {
+                var selectedService = await _unitOfWork.ServiceRepository.GetById(new Guid(id));
+                selectedEmployee.Services.Add(selectedService);
+            }
+
+            _unitOfWork.Save();
+
+            return (await Index());
         }
     }
 }

@@ -12,8 +12,11 @@ namespace Booking.Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public bool SetByEmployee { get; set; }
         public Guid BarbershopId { get; set; }
         public Guid ServiceId { get; set; }
-        public Guid EmploeeAvId { get; set; }
+        public Guid EmploeeId { get; set; }
     }
 }

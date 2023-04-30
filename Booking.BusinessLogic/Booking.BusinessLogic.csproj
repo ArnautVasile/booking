@@ -54,12 +54,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IBarbershopRepository.cs" />
+    <Compile Include="Repository\IBaseUserEntity.cs" />
     <Compile Include="Repository\IEmployeeRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IServiceRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\IUserAppointmentRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Booking.Domain\Booking.Domain.csproj">

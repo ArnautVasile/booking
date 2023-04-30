@@ -14,7 +14,6 @@ namespace Booking.Persistance.Context
         public DbSet<BaseUserEntity> BaseUserEntities { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<EmployeeAvailability> EmployeeAvailabilities { get; set; }
         public DbSet<UserAppointment> UserAppointments { get; set; }
         public DataContext():base("name=booking")
         {
