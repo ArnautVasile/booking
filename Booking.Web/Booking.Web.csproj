@@ -127,6 +127,32 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\images\BackgroundImage.png" />
+    <Content Include="Content\images\facebook.png" />
+    <Content Include="Content\images\headBackground.png" />
+    <Content Include="Content\images\heart.png" />
+    <Content Include="Content\images\image1.png" />
+    <Content Include="Content\images\image2.png" />
+    <Content Include="Content\images\image3.png" />
+    <Content Include="Content\images\image33.png" />
+    <Content Include="Content\images\image4.png" />
+    <Content Include="Content\images\image6.png" />
+    <Content Include="Content\images\insta.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\main_background.png" />
+    <Content Include="Content\images\servicii11.png" />
+    <Content Include="Content\images\servicii2.png" />
+    <Content Include="Content\images\servicii3.png" />
+    <Content Include="Content\images\servicii4.png" />
+    <Content Include="Content\images\servicii5.png" />
+    <Content Include="Content\images\servicii6.png" />
+    <Content Include="Content\images\servicii7.png" />
+    <Content Include="Content\images\servicii8.png" />
+    <Content Include="Content\images\twitter.png" />
+    <Content Include="Content\images\work-1.jpg" />
+    <Content Include="Content\images\youtube.png" />
+    <Content Include="Content\mystyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -183,7 +209,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Employee\Index.cshtml" />
     <Content Include="Views\Admin\Barbershop\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index2.cshtml" />
     <Content Include="Views\Admin\Service\Index.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Admin\Login\Index.cshtml" />
@@ -193,6 +219,11 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

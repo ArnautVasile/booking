@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -7,6 +8,149 @@
 @using Booking.Web.Controllers
 @model EmployeeBarbershop
 
+@using (Html.BeginForm("AddEmployee", "EmployeeBarbershop", FormMethod.Post, new { autocomplete = "off" }))
+{
+    
+    <div>
+        <div>
+            <div class="form-group">
+                <div style="width: 20.75vw; position: absolute; right: 50%; top: 15%; ">
+                    <label for="username1" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">First Name</label>
+                    <input type="text" class="form-control"
+                           id="username1" placeholder="Enter First Name"
+                           style="border-radius: 10px; font-family: Arial; font-size: 2.5vb; ">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div style="width: 20.75vw; position: absolute; right: 50%; top: 25%; ">
+                    <label for="username2" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 3px;">Last Name</label>
+                    <input type="text" class="form-control"
+                           id="username2" placeholder="Enter Last Name"
+                           style="border-radius: 10px; font-family: Arial; font-size: 2.5vb;">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style=" position: absolute; left: 35%; top: 5%; transform: translateY(-50%); width: 50%;">
+                <h1 style=" font-family: Poppins ; color:snow; text-align: center; font-size: 4vb;"></h1>
+            </div>
+
+            <div style="border-top: 1px double; color: black;   width: 78%; position: absolute; right: 0;bottom:50% ;"></div>
+
+            <div class="form-group">
+                <div style="width: 20.75vw; position: absolute; right: 18%; top: 15%; ">
+                    <label for="username" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">Username</label>
+                    <input type="text" class="form-control"
+                           id="username" placeholder="Enter Username"
+                           style="border-radius: 10px; font-family: Arial; font-size: 2.5vb;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div style="width: 20.75vw; position: absolute; right: 18.5%; top: 25%;">
+                    <label for="password" style="font-weight: bold; display: block; font-size: 1.5rem;margin-left:0.4em; margin-bottom: 0.2em;">Password</label>
+                    <div class="input-group" style="margin-left: 10px;">
+                        <input type="password" class="form-control" id="password" placeholder="Enter Password" style="border-bottom-left-radius: 0.5em;border-top-left-radius: 0.5em; font-family: Arial; font-size: 2.5vb;">
+                        <div class="input-group-append">
+                            <span class="input-group-text" style="border-bottom-left-radius: 0; border-top-left-radius: 0; border-bottom-right-radius: 0.5em; border-top-right-radius: 0.5em; ">
+                                <i class="fa fa-eye-slash" style="font-size: 2vb; display: flex; align-items: center; width: 1.3vw; height: 3.8vh ;" id="togglePassword1"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div style=" position: absolute; right: 18%; top: 39.5%; ">
+                    <button class="btn btn-lg btn-dark" id="createButton" style="background-color: black; color: white;
+	                            border-radius: 0.5em; width: 20.75vw; height: 5.15vh; font-size: 1.5rem;">
+                        Add Employee
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+<div class="table-responsive" style=" position: absolute; right: 5%; top:55%; width: 68vw;">
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>BarberShop</th>
+                <th> </th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="no-outline"
+                           placeholder="First Name"
+                           value="Vasile" />
+                </td>
+                <td>
+                    <input type="text" class="no-outline"
+                           placeholder="Last Name"
+                           value="Arnaut" />
+                </td>
+                <td>
+                    <input type="text" class="no-outline"
+                           placeholder="Username"
+                           value="vasile12" />
+                </td>
+                <td>
+                    <input type="text" class="no-outline"
+                           placeholder="Password"
+                           value="my_password123" />
+                </td>
+
+                <td id="dropdownList">
+                    <select class="select-btn"
+                            style="width: 8vw; height: 3.5vh; color: snow;
+                                    border: none; background-color: black;
+                                    border-radius: 0.25em; text-align: center;">
+                        <option class="select-menu options" style="background-color: transparent;">Filiala 1</option>
+                        <option class="select-menu options" style="background-color: transparent;">Filiala 2</option>
+                        <option class="select-menu options" style="background-color: transparent;">Filiala 3</option>
+                        <option class="select-menu options" style="background-color: transparent;">Filiala 4</option>
+                    </select>
+                </td>
+
+                <td>
+                    <button class="btn btn-lg btn-dark" id="Update" style="background-color: black; color: white;
+                                    border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                        Save
+                    </button>
+
+
+                </td>
+                <td>
+                    <button class="btn btn-lg btn-dark" id="Delete" style="background-color: black; color: white;
+                                border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                        Delete
+                    </button>
+
+
+                </td>
+            </tr>
+
+
+        </tbody>
+
+
+    </table>
+</div>
+
+<!--
 <h2>Employees</h2>
 
 @using (Html.BeginForm("AddEmployee", "EmployeeBarbershop", FormMethod.Post, new { autocomplete = "off" }))
@@ -114,3 +258,35 @@
     </tbody>
 </table>
 
+    -->
+
+<script>
+    const optionMenu = document.querySelector(".select-menu"),
+        selectBtn = optionMenu.querySelector(".select-btn"),
+        options = optionMenu.querySelectorAll(".option"),
+        sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+    selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));
+
+    options.forEach(option => {
+        option.addEventListener("click", () => {
+            let selectedOption = option.querySelector(".option-text").innerText;
+            sBtn_text.innerText = selectedOption;
+
+            optionMenu.classList.remove("active");
+        });
+    });
+
+</script>
+
+<script>
+    const togglePassword1 = document.querySelector('#togglePassword1');
+    const password1 = document.querySelector('#password');
+
+    togglePassword1.addEventListener('click', function (e) {
+        const type = password1.getAttribute('type') === 'password' ? 'text' : 'password';
+        password1.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
