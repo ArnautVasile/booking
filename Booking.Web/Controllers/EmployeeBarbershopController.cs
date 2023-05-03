@@ -15,7 +15,7 @@ using Booking.BusinessLogic.Enums;
 
 namespace Booking.Web.Controllers
 {
-    [AccessLevel(UserRole.Employee)]
+   // [AccessLevel(UserRole.Employee)]
     public class EmployeeBarbershopController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
