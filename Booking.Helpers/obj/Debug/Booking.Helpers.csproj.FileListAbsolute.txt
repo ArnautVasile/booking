@@ -1,0 +1,6 @@
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\bin\Debug\Booking.Helpers.dll
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\bin\Debug\Booking.Helpers.pdb
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\obj\Debug\Booking.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\obj\Debug\Booking.Helpers.dll
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\obj\Debug\Booking.Helpers.pdb
+C:\Users\HdGam\source\repos\booking\Booking.Helpers\obj\Debug\Booking.Helpers.csproj.AssemblyReference.cache

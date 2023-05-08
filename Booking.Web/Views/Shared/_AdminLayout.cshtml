@@ -120,9 +120,16 @@
                 </li>
 
                 <li>
-                    <a href="~/Home/Index" class="nav-link px-0 align-middle">
-                        <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline" style=" position: absolute; top: 93%; left: 10%; color: snow; font-size: 1.5vw">Log Out</span>
-                    </a>
+                    @using (Html.BeginForm("SignOut", "Login", FormMethod.Post))
+                    {
+                       
+                    //<a href="~/Home/Index" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> 
+                            <button type="submit" style=" position: absolute; top: 93%; left: 10%; color: snow; font-size: 1.5vw;" class="btn btn-link">
+                                Log Out
+                            </button>
+                    //</a>
+                    }
                 </li>
 
             </ul>
