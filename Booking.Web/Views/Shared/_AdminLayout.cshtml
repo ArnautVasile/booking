@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Product View";
+
+}
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/css/dropdown.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <style>
+        .no-outline {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            width: 140px;
+        }
+
+
+        .table td, .table th {
+            font-size: 20px;
+        }
+    </style>
+
+    <style>
+        .fs-4 {
+            color: snow;
+            font-size: 10vb;
+        }
+
+
+
+        .left-side {
+            background-color: #333333; /* set the background color of the left side to black */
+            width: 22%; /* set the width of the left side to 30% of the page */
+            height: 100%; /* set the height of the left side to 100% of the page */
+            position: fixed; /* make sure the left side stays fixed in place */
+            top: 0; /* position the left side at the top of the page */
+            left: 0; /* position the left side at the left of the page */
+            z-index: 100; /* make sure the left side is behind other elements */
+        }
+
+        .top-side {
+            background-color: #333333; /* set the background color of the left side to black */
+            width: 100%; /* set the width of the left side to 30% of the page */
+            height: 9%; /* set the height of the left side to 100% of the page */
+            position: fixed; /* make sure the left side stays fixed in place */
+            top: 0; /* position the left side at the top of the page */
+            left: 0; /* position the left side at the left of the page */
+            z-index: 98; /* make sure the left side is behind other elements */
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+    @RenderBody()
+    @RenderSection("Scripts", required: false)
+
+
+    <div class="left-side">
+        <div class="top-side">
+            <div style="position: absolute; left: 35%; bottom:-20%; transform: translateY(-50%); width: 50%;">
+                <h1 id="page-title" style="font-family: Poppins; color:snow; text-align: center; font-size: 3.5vb; z-index:99">Page Name</h1>
+            </div>
+            <div style="border-left: 1px solid white; height: 100%; position: absolute; left: 22%;"></div>
+        </div>
+
+        <script>
+            // Get the title element of the HTML document
+            var pageTitle = document.title;
+
+            // Set the text of the heading element to the page title
+            document.getElementById("page-title").textContent = pageTitle;
+        </script>
+
+        <div style="border-top: 1px solid white; width: 100%; position: absolute; bottom: 9% ;"></div>
+        <div style="border-top: 1px solid white; width: 100%; position: absolute; top: 9%;"></div>
+
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-5 pt-5 text-white min-vh-100">
+            <a class="d-flex align-items-center pb-5 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="ms-1 d-none d-sm-inline" style="position: absolute; top: 1%; left: 20%; font-size: 2vw; z-index: 101;">Admin Page</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+
+
+                <li>
+                <li>
+                    <a href="~/Admin/Barbershop" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline" style="position: absolute; top: 14%; left: 10%; color: snow; font-size: 1.4vw;">Administrare barbershop</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Admin/Employee" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline" style="position: absolute; top: 22%; left: 10%; color: snow; font-size: 1.4vw; ">Administrare angajați</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="~/Home/Button3" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline" style="position: absolute; top: 30%; left: 10%; color: snow; font-size: 1.4vw; ">Administrare servicii</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/Home/Button4" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> <span class="ms-1 d-none d-sm-inline" style="position: absolute; top: 38%; left: 10%; color: snow; font-size: 1.4vw; ">Administrare programări</span>
+                    </a>
+                </li>
+
+                <li>
+                    @using (Html.BeginForm("SignOut", "Login", FormMethod.Post))
+                    {
+                       
+                    //<a href="~/Home/Index" class="nav-link px-0 align-middle">
+                        <i class="fs-5 bi-table"></i> 
+                            <button type="submit" style=" position: absolute; top: 93%; left: 10%; color: snow; font-size: 1.5vw;" class="btn btn-link">
+                                Log Out
+                            </button>
+                    //</a>
+                    }
+                </li>
+
+            </ul>
+            <hr>
+
+        </div>
+    </div>
+</body>
