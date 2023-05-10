@@ -13,53 +13,14 @@
 </head>
 <body>
     <div class="wrapper">
-        <!-- Header -->
-        @* <nav class="navbar navbar-default navbar-fixed-top">
-            @Html.Partial("_Header")
-        </nav>
-        *@
-        <!-- Navigation -->
-
         <!-- Main view -->
         <section class="content">
             @RenderBody()
             <!-- Footer-->
         </section>
-
-        <!-- Section for main scripts render
-        -->
-        <!--Scripts.Render("~/bundles/luna/js")-->
-        <!-- Handler for local scripts -->
-    </div>
-    <!--
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-
-        </div>
+        
     </div>
 
-    <div class="content">
-        <!--
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-         
-    </div>
-    -->
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

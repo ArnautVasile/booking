@@ -13,6 +13,10 @@ namespace Booking.Web.App_Start
             // Bootstrap
             bundles.Add(new StyleBundle("~/Content/bootstrap.min.css").Include(
                       "~/Content/bootstrap.css", new CssRewriteUrlTransform()));
+
+            // css editat
+            bundles.Add(new StyleBundle("~/Content/css/mystyle.css").Include(
+                      "~/Content/mystyle.css", new CssRewriteUrlTransform()));
         }
     }
 }

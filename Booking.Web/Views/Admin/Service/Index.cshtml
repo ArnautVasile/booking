@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
 }
 
@@ -13,6 +14,183 @@
     var Model = serializer.Deserialize<ServiceBarbEmp>(ViewBag.ModelJson);
 }
 
+
+<div style="position:absolute; display: flex;">
+    <div style="border-top: 1px double; color: black;  position:absolute; top:10%; width:78%;"></div>
+    <h1 style="text-align:left; color:black; font-size: 2.5rem; font-family:'Franklin Gothic';">Add Service to Barbershop</h1>
+    <div style="border-top: 1px double; color: black;  position:relative; top:20%; width:78%;"></div>
+</div>
+
+@using (Html.BeginForm("AddServiceBarbershop", "ServiceBarbEmp", FormMethod.Post, new { autocomplete = "off" }))
+{
+    <div class="form-group">
+        <div style="width: 20.75vw; position: absolute; right: 50%; top: 12%; ">
+            <label for="username1" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">Service Type</label>
+            <input type="text" class="form-control"
+                   id="username1" placeholder="Enter Service Type" name="ServiceType"
+                   style="border-radius: 0.4em; font-family: Arial; font-size: 2.5vb; ">
+        </div>
+    </div>
+    <div class="form-group">
+        <div style="width: 20.75vw; position: absolute; right: 18%; top: 12%; ">
+            <label for="username" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">Service Name</label>
+            <input type="text" class="form-control" name="ServiceName"
+                   id="username" placeholder="Enter Service Name"
+                   style="border-radius: 0.4em; font-family: Arial; font-size: 2.5vb;">
+        </div>
+    </div>
+
+    <div style="font-size:1.5rem; position: absolute; right: 50%; top: 22.5%; z-index: 98;">
+        <label for="BarberShop" style="font-weight: bold; display: block; font-size: 1.5rem; margin-bottom: 0.2em;">BarberShop Name</label>
+        <select class="select-btn" name="BarbershopId"
+                style="width: 20.5vw; height: 5vh;
+                                    border: 0.07em solid gray; background-color: white;
+                                    border-radius: 0.4em; text-align: center;">
+             @foreach (var barbershop in Model.barbershops)
+             {
+                 <option class="select-menu options" value="@barbershop.Id" style="background-color: transparent;">@barbershop.Name</option>
+             }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <div style=" position: absolute; right: 18%; top: 26.5%; ">
+            <button class="btn btn-lg btn-dark" style="background-color: black; color: white;
+	                            border-radius: 0.4em; width: 20.75vw; height: 5.15vh; font-size: 1.5rem;">
+                Add Service to Barbershop
+            </button>
+        </div>
+    </div>
+}
+
+<div style="position: absolute; right: 5%; top: 35%; width: 68vw; display: flex; flex-direction: column;  ">
+    <div class="table-responsive" style="right:5%; top:35%; width:58vw; ">
+        <table class="table table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th>Barbershop</th>
+                    <th>Service Type</th>
+                    <th>Service Name</th>
+                    <th style="width: 8vw"> </th>
+                    <th style="width: 8vw"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var barbershop in Model.barbershops)
+                {
+                    if (barbershop.Services != null)
+                    {
+                        foreach (var service in barbershop.Services)
+                        {
+                            <tr>
+                                @using (Html.BeginForm("UpdateServiceBarbershop", "ServiceBarbEmp", FormMethod.Post))
+                                {
+                                    <td>
+                                        @barbershop.Name
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="Id" value="@service.Id" />
+                                        <input type="text" class="no-outline" placeholder="Service Type" name="ServiceType" value="@service.ServiceType" />
+                                    </td>
+
+                                    <td>
+                                        <input type="text" class="no-outline" placeholder="Service Name" name="ServiceName" value="@service.ServiceName" />
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-lg btn-dark" id="Update" style="background-color: black; color: white;
+                                    border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                                            Save
+                                        </button>
+
+                                    </td>
+                                }
+                            <td>
+                                <form action="@Url.Action("DeleteServiceBarbershop", "ServiceBarbEmp", new { id = service.Id })" method="post">
+                                    <button class="btn btn-lg btn-dark" id="Delete" style="background-color: black; color: white;
+                                border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+    <div style="margin-top: 1rem;">
+
+        <div style="border-top: 1px double; color: black;  position:relative; left:-7.5%; width:114%;"></div>
+        <h1 style=" margin-top: 1rem; text-align:left; color:black; font-size: 2.5rem; font-family:'Franklin Gothic';">Add Service to Employee</h1>
+        @using (Html.BeginForm("UpdateEmployeeService", "ServiceBarbEmp", FormMethod.Post))
+        {
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <div style="margin-right: 1rem;">
+                <div style="font-size:1.5rem; z-index: 98; position:relative; left: 14%">
+                    <label for="BarberShop" style="font-weight: bold; display: block; font-size: 1.5rem; margin-bottom: 0.2em;">BarberShop Name</label>
+                    <select class="select-btn" name="BarbershopId"  id="barbershop-select" onchange="showEmployees()"
+                            style="width: 20.5vw; height: 5vh;
+                                    border: 0.07em solid gray; background-color: white;
+                                    border-radius: 0.4em; text-align: center;">
+                        @foreach (var barbershop in Model.barbershops)
+                        {
+                            <option class="select-menu options" value="@barbershop.Id">@barbershop.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div style="font-size: 1.5rem; z-index: 98; position: relative; right: 65%;">
+                    <label for="Employee" style="font-weight: bold; display: block; font-size: 1.5rem; margin-bottom: 0.2em;">Employee Name</label>
+                    <select class="select-btn" name="EmployeeId" id="employee-select" onchange="showServices()"
+                            style="width: 20.5vw; height: 5vh;
+                                    border: 0.07em solid gray; background-color: white;
+                                    border-radius: 0.4em; text-align: center;">
+                        <option class="select-menu options" value="" style="background-color: transparent;"></option>
+                    </select>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="table-responsive" id="services-table" style=" width: 40vw; margin-top: 0.5rem;">
+
+            <table class="table table-striped table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Service Type</th>
+                        <th>Service Name</th>
+                        <th style="width: 8vw"> </th>
+                    </tr>
+                </thead>
+                <tbody id="services-body">
+                   
+                </tbody>
+
+            </table>
+        </div>
+        <div class="form-group">
+            <div style=" position: relative; right: 0; top: 26.5%; ">
+                    <button type="submit" class="btn btn-lg btn-dark" style="background-color: black; color: white;
+	                            border-radius: 0.4em; width: 20.75vw; height: 5.15vh; font-size: 1.5rem;">
+                        Update Service
+                    </button>
+            </div>
+        </div>
+        }
+    </div>
+
+</div>
+
+<!--
 
 <h2>Barbershop</h2>
 <h4>Add Service to Barbershop</h4>
@@ -119,126 +297,126 @@
     <br>
 
 
-    <!-- Table of services -->
-    <div id="services-table" style="display: none;">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Service Type</th>
-                    <th>Service Name</th>
-                    <th>Checked</th>
-                </tr>
-            </thead>
-            <tbody id="services-body">
-            </tbody>
-        </table>
-    </div>
+<div id="services-table" style="display: none;">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Service Type</th>
+                <th>Service Name</th>
+                <th>Checked</th>
+            </tr>
+        </thead>
+        <tbody id="services-body">
+        </tbody>
+    </table>
+</div>
 
 
-    //using (Html.BeginForm("AddService", "ServiceBarbEmp", FormMethod.Post, new { autocomplete = "off" }))
-    //{
-        <button type="submit" class="btn btn-primary">Update Employee Services</button>
-    //}
+//using (Html.BeginForm("AddService", "ServiceBarbEmp", FormMethod.Post, new { autocomplete = "off" }))
+//{
+<button type="submit" class="btn btn-primary">Update Employee Services</button>
+//}
 
 }
+-->
+<input type="hidden" id="model-json" value="@ViewBag.ModelJson" />
 
-    <input type="hidden" id="model-json" value="@ViewBag.ModelJson" />
-
-    <script>
-        function showServices() {
-            var barbershopSelect = document.getElementById("barbershop-select");
-            var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
-            var barbershopId = barbershopSelectedOption.value;
-
-
-            var employeeSelect = document.getElementById("employee-select");
-            var employeeSelectedOption = employeeSelect.options[employeeSelect.selectedIndex];
-            var employeeId = employeeSelectedOption.value;
+<script>
+    function showServices() {
+        var barbershopSelect = document.getElementById("barbershop-select");
+        var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
+        var barbershopId = barbershopSelectedOption.value;
 
 
-            var servicesTable = document.getElementById("services-table");
-            var servicesBody = document.getElementById("services-body");
-            // clear existing services from the table
-            servicesBody.innerHTML = "";
-
-            var modelJson = document.getElementById("model-json").value;
-            var Model = JSON.parse(modelJson);
-
-            // find the selected barbershop from the model
-            var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
-            var selectedEmployee = Model.employees.find(e => e.Id.toString() === employeeId);
-
-            if (selectedBarbershop) {
-                // display the services of the selected barbershop
-                selectedBarbershop.Services.forEach(service => {
-
-                    var row = document.createElement("tr");
-                    var typeCell = document.createElement("td");
-                    var nameCell = document.createElement("td");
-                    var checkBoxCell = document.createElement("td");
-                    var checkBox = document.createElement("input");
+        var employeeSelect = document.getElementById("employee-select");
+        var employeeSelectedOption = employeeSelect.options[employeeSelect.selectedIndex];
+        var employeeId = employeeSelectedOption.value;
 
 
-                    typeCell.innerHTML = service.ServiceType;
-                    nameCell.innerHTML = service.ServiceName;
-                    checkBox.type = "checkbox";
-                    checkBox.name = "SelectedServices";
-                    checkBox.value = service.Id;
-                    checkBoxCell.appendChild(checkBox);
+        var servicesTable = document.getElementById("services-table");
+        var servicesBody = document.getElementById("services-body");
+        // clear existing services from the table
+        servicesBody.innerHTML = "";
 
-                    if (selectedEmployee.Services.some(s => s.Id === service.Id)) {
-                        checkBox.checked = true;
-                    }
-                    //alert("aa");
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
 
-                    row.appendChild(typeCell);
-                    row.appendChild(nameCell);
-                    row.appendChild(checkBoxCell);
-                    servicesBody.appendChild(row);
-                });
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+        var selectedEmployee = Model.employees.find(e => e.Id.toString() === employeeId);
 
-                // show the services table
-                servicesTable.style.display = "block";
-            } else {
-                // hide the services table if no barbershop is selected
-                servicesTable.style.display = "none";
-            }
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+            selectedBarbershop.Services.forEach(service => {
+
+                var row = document.createElement("tr");
+                var typeCell = document.createElement("td");
+                var nameCell = document.createElement("td");
+                var checkBoxCell = document.createElement("td");
+                var checkBox = document.createElement("input");
+
+
+                typeCell.innerHTML = service.ServiceType;
+                nameCell.innerHTML = service.ServiceName;
+                checkBox.type = "checkbox";
+                checkBox.name = "SelectedServices";
+                checkBox.value = service.Id;
+                checkBoxCell.appendChild(checkBox);
+
+                if (selectedEmployee.Services.some(s => s.Id === service.Id)) {
+                    checkBox.checked = true;
+                }
+
+                row.appendChild(typeCell);
+                row.appendChild(nameCell);
+                row.appendChild(checkBoxCell);
+                servicesBody.appendChild(row);
+            });
+
+            // show the services table
+            servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            servicesTable.style.display = "none";
         }
+    }
 
-        function showEmployees() {
-            var barbershopSelect = document.getElementById("barbershop-select");
-            var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
+    function showEmployees() {
+        var barbershopSelect = document.getElementById("barbershop-select");
+        var barbershopSelectedOption = barbershopSelect.options[barbershopSelect.selectedIndex];
 
-            var employeeSelect = document.getElementById("employee-select");
+        var employeeSelect = document.getElementById("employee-select");
 
-            var barbershopId = barbershopSelectedOption.value;
+        var barbershopId = barbershopSelectedOption.value;
 
-            var modelJson = document.getElementById("model-json").value;
-            var Model = JSON.parse(modelJson);
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
 
-            // find the selected barbershop from the model
-            var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
 
-            if (selectedBarbershop) {
-                // display the services of the selected barbershop
-                employeeSelect.innerHTML = "";
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+            employeeSelect.innerHTML = "";
 
-                selectedBarbershop.Employees.forEach(employee => {
-                    var option = document.createElement("option");
-                    option.value = employee.Id;
-                    option.text = employee.FirstName;
-                    employeeSelect.add(option);
-                });
+            selectedBarbershop.Employees.forEach(employee => {
 
-                //    servicesTable.style.display = "block";
-            } else {
-                // hide the services table if no barbershop is selected
-                //   servicesTable.style.display = "none";
-            }
-            showServices();
+                var option = document.createElement("option");
+                option.className = "select-menu options";
+                option.value = employee.Id;
+                option.text = employee.FirstName;
+                employeeSelect.add(option);
+            });
+
+            //    servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            //   servicesTable.style.display = "none";
         }
+        showServices();
+    }
 
-        window.onload = function () {
-            showEmployees();
-        };
-    </script>
+    window.onload = function () {
+        showEmployees();
+    };
+</script>

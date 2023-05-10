@@ -1,16 +1,185 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
 }
 
-<h2>Index</h2>
+@using System.Web.Optimization
 
-<a type="button" href="../Admin/Barbershop">Barbershop</a>
-<br>
-<a type="button" href="../Admin/Employee">Employee</a>
-<br>
-<a type="button" href="../Admin/Service">Service</a>
-<br>
-<a type="button" href="../Booking/">Booking</a>
-<br>
-<a type="button" href="../Admin/Login">Login</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/Content/mystyle.css">
+</head>
+
+<body @*style="background-color: #FFFFFF"*@>
+    @Html.Partial("_Header")
+    @Html.Partial("_Navigation")
+    <section class="ftco-section ftco-no-pt ftco-no-pb" id="services-section">
+        <div class="text-center">
+            <h2 class="h2-after">SERVICIILE NOASTRE</h2>
+        </div>
+
+        <br />
+        <br />
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii11.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Frezură</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Frezură clasică.............................200 lei</span>
+                                <span>Frezură copii................................190 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii2.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Mască facială</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Black Mask Classic.....................200 lei</span>
+                                <span>Clay Mask......................................200 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii3.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Modelarea</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Modelarea bărbii.......................150 lei</span>
+                                <span>Camuflarea bărbii......................100 lei</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii4.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Ras Royal</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>Ras-Royal Classic.......................300 lei</span>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii5.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Aranjare</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Aranjarea părului.......................100 lei
+                                </span>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii6.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Complex</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Full Pack.........................................350 lei
+                                </span>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii7.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Classic</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Classic experience.....................200 lei
+                                </span>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="card project">
+                        <img src="~/Content/images/servicii8.png" class="card-img-top" alt="Colorlib Template">
+                        <div class="card-body">
+                            <h5 class="card-title">Epilare</h5>
+                            <div style="display: flex; flex-direction: column;">
+                                <span>
+                                    Epilare pe față cu ceară...........100 lei
+                                </span>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galery-section">
+        <br />
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="~/Content/images/image1.png" class="img-fluid my-2 w-100">
+                    <img src="~/Content/images/image2.png" class="img-fluid my-2 w-100">
+                </div>
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <img src="~/Content/images/image33.png" class="img-fluid w-100">
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="~/Content/images/image4.png" class="img-fluid my-2 w-100">
+                        </div>
+                        <div class="col-md-12">
+                            <img src="~/Content/images/image6.png" class="img-fluid my-2 w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+    </section>
+    <div id="content">
+        <link rel="stylesheet" type="text/css" href="~/Content/css/mystyle.css">
+
+        <div class="background-section">
+            <div class="container-fluid d-flex align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col-md-12 text-center continut">
+                        <h1 class="h1-alb">
+                            WALK-INS ARE WELCOME,BUT
+
+
+                            BOOKING IS BEST!
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_Footer")
+</body>
+</html>
