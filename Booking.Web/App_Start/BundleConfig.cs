@@ -14,7 +14,7 @@ namespace Booking.Web.App_Start
             bundles.Add(new StyleBundle("~/Content/bootstrap.min.css").Include(
                       "~/Content/bootstrap.css", new CssRewriteUrlTransform()));
 
-            // Bootstrap
+            // css editat
             bundles.Add(new StyleBundle("~/Content/css/mystyle.css").Include(
                       "~/Content/mystyle.css", new CssRewriteUrlTransform()));
         }
