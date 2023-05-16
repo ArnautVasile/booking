@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDEA42DD-01D8-4A67-993C-2A3EB41AFCEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Booking.Persistance</RootNamespace>
+    <AssemblyName>Booking.Persistance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Migrations\202304291447564_FixFields.cs" />
+    <Compile Include="Migrations\202304291447564_FixFields.designer.cs">
+      <DependentUpon>202304291447564_FixFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304301842030_FixFields2.cs" />
+    <Compile Include="Migrations\202304301842030_FixFields2.designer.cs">
+      <DependentUpon>202304301842030_FixFields2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\BarbershopRepository.cs" />
+    <Compile Include="Repository\BaseUserEntityRepository.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Migrations\202304180904513_GenerateFirstEntities.cs" />
+    <Compile Include="Migrations\202304180904513_GenerateFirstEntities.designer.cs">
+      <DependentUpon>202304180904513_GenerateFirstEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304181202224_GenerateFirstEntities2.cs" />
+    <Compile Include="Migrations\202304181202224_GenerateFirstEntities2.designer.cs">
+      <DependentUpon>202304181202224_GenerateFirstEntities2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304181541352_GenerateFirstEntities3.cs" />
+    <Compile Include="Migrations\202304181541352_GenerateFirstEntities3.designer.cs">
+      <DependentUpon>202304181541352_GenerateFirstEntities3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ServiceRepository.cs" />
+    <Compile Include="Repository\UnitOfWork.cs" />
+    <Compile Include="Repository\UserAppointmentRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Booking.BusinessLogic\Booking.BusinessLogic.csproj">
+      <Project>{f4affdcb-4611-4691-b1e8-418e11ca7e8b}</Project>
+      <Name>Booking.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Booking.Domain\Booking.Domain.csproj">
+      <Project>{9430237a-ba66-4ad1-83b7-a546c77676da}</Project>
+      <Name>Booking.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Booking.Helpers\Booking.Helpers.csproj">
+      <Project>{84337478-da3f-4be3-86da-b15dfe1b6f09}</Project>
+      <Name>Booking.Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202304180904513_GenerateFirstEntities.resx">
+      <DependentUpon>202304180904513_GenerateFirstEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304181202224_GenerateFirstEntities2.resx">
+      <DependentUpon>202304181202224_GenerateFirstEntities2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304181541352_GenerateFirstEntities3.resx">
+      <DependentUpon>202304181541352_GenerateFirstEntities3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304291447564_FixFields.resx">
+      <DependentUpon>202304291447564_FixFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304301842030_FixFields2.resx">
+      <DependentUpon>202304301842030_FixFields2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
