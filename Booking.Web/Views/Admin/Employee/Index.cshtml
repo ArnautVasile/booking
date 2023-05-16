@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     ViewBag.Title = "Index";
+
 }
 
 @using Booking.Web.Models
@@ -10,13 +11,21 @@
 
 @using (Html.BeginForm("AddEmployee", "EmployeeBarbershop", FormMethod.Post, new { autocomplete = "off" }))
 {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
     <div>
         <div>
             <div class="form-group">
                 <div style="width: 20.75vw; position: absolute; right: 50%; top: 15%; ">
                     <label for="username1" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">First Name</label>
+<<<<<<< HEAD
                     <input type="text" class="form-control"
+=======
+                    <input type="text" class="form-control" name="FirstName"
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
                            id="username1" placeholder="Enter First Name"
                            style="border-radius: 10px; font-family: Arial; font-size: 2.5vb; ">
                 </div>
@@ -25,12 +34,20 @@
             <div class="form-group">
                 <div style="width: 20.75vw; position: absolute; right: 50%; top: 25%; ">
                     <label for="username2" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 3px;">Last Name</label>
+<<<<<<< HEAD
                     <input type="text" class="form-control"
+=======
+                    <input type="text" class="form-control" name="LastName"
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
                            id="username2" placeholder="Enter Last Name"
                            style="border-radius: 10px; font-family: Arial; font-size: 2.5vb;">
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
         <div>
             <div style=" position: absolute; left: 35%; top: 5%; transform: translateY(-50%); width: 50%;">
                 <h1 style=" font-family: Poppins ; color:snow; text-align: center; font-size: 4vb;"></h1>
@@ -42,7 +59,11 @@
                 <div style="width: 20.75vw; position: absolute; right: 18%; top: 15%; ">
                     <label for="username" style="font-weight: bold; display: block; font-size: 2.5vb; margin-bottom: 0.2em;">Username</label>
                     <input type="text" class="form-control"
+<<<<<<< HEAD
                            id="username" placeholder="Enter Username"
+=======
+                           id="username" placeholder="Enter Username"  name="Username"
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
                            style="border-radius: 10px; font-family: Arial; font-size: 2.5vb;">
                 </div>
             </div>
@@ -51,7 +72,11 @@
                 <div style="width: 20.75vw; position: absolute; right: 18.5%; top: 25%;">
                     <label for="password" style="font-weight: bold; display: block; font-size: 1.5rem;margin-left:0.4em; margin-bottom: 0.2em;">Password</label>
                     <div class="input-group" style="margin-left: 10px;">
+<<<<<<< HEAD
                         <input type="password" class="form-control" id="password" placeholder="Enter Password" style="border-bottom-left-radius: 0.5em;border-top-left-radius: 0.5em; font-family: Arial; font-size: 2.5vb;">
+=======
+                        <input type="password" class="form-control" id="password" name="Password" placeholder="Enter Password" style="border-bottom-left-radius: 0.5em;border-top-left-radius: 0.5em; font-family: Arial; font-size: 2.5vb;">
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
                         <div class="input-group-append">
                             <span class="input-group-text" style="border-bottom-left-radius: 0; border-top-left-radius: 0; border-bottom-right-radius: 0.5em; border-top-right-radius: 0.5em; ">
                                 <i class="fa fa-eye-slash" style="font-size: 2vb; display: flex; align-items: center; width: 1.3vw; height: 3.8vh ;" id="togglePassword1"></i>
@@ -62,6 +87,24 @@
             </div>
 
 
+<<<<<<< HEAD
+=======
+            <div style="font-size:1.5rem; position: absolute; right: 50%; top: 35.5%; z-index: 5555;">
+                <label for="BarberShop" style="font-weight: bold; display: block; font-size: 1.5rem; margin-bottom: 0.2em;">BarberShop Name</label>
+                <select class="select-btn" name="BarbershopId"
+                        style="width: 20.5vw; height: 5vh;
+                                    border: 0.07em solid gray; background-color: white;
+                                    border-radius: 0.4em; text-align: center;">
+                    <option class="select-menu options" value="null" style="background-color: transparent;">Neselectat</option>
+                    @foreach (var barbershop in Model.barbershops)
+                    {
+                        <option class="select-menu options" value="@barbershop.Id" style="background-color: transparent;">@barbershop.Name</option>
+                    }
+                </select>
+            </div>
+
+
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
             <div class="form-group">
                 <div style=" position: absolute; right: 18%; top: 39.5%; ">
                     <button class="btn btn-lg btn-dark" id="createButton" style="background-color: black; color: white;
@@ -91,6 +134,7 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
             <tr>
                 <td>
                     <input type="text" class="no-outline"
@@ -147,6 +191,76 @@
         </tbody>
 
 
+=======
+            @foreach (var employee in Model.employees)
+            {
+                <tr>
+                    @using (Html.BeginForm("UpdateEmployee", "EmployeeBarbershop", FormMethod.Post))
+                    {
+                        <td>
+                            <input type="hidden" name="Id" value="@employee.Id" />
+                            <input type="text" class="no-outline"
+                                   placeholder="First Name" name="FirstName"
+                                   value="@employee.FirstName" />
+                        </td>
+                        <td>
+                            <input type="text" class="no-outline"
+                                   placeholder="Last Name" name="LastName"
+                                   value="@employee.LastName" />
+                        </td>
+                        <td>
+                            <input type="text" class="no-outline"
+                                   placeholder="Username" name="Username"
+                                   value="@employee.Username" />
+                        </td>
+                        <td>
+                            <input type="text" class="no-outline"
+                                   placeholder="Password" name="Password"
+                                   value="@employee.Password" />
+                        </td>
+
+                        <td id="dropdownList">
+                            <select class="select-btn" name="BarbershopId"
+                                    style="width: 8vw; height: 3.5vh; color: snow;  border: none; background-color: black; border-radius: 0.25em; text-align: center;">
+                                <option selected class="select-menu options" style="background-color: transparent;" value="null">Neselectat</option>
+
+                                @foreach (var barbershop in Model.barbershops)
+                                {
+                                    if (barbershop.Id == employee.BarbershopId)
+                                    {
+                                        <option selected class="select-menu options" style="background-color: transparent;" value="@barbershop.Id">@barbershop.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option class="select-menu options" style="background-color: transparent;" value="@barbershop.Id">@barbershop.Name</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+
+                        <td>
+                            <button class="btn btn-lg btn-dark" id="Update" style="background-color: black; color: white;
+                                    border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                                Save
+                            </button>
+
+
+                        </td>
+                    }
+                        <td>
+                            <form action="@Url.Action("DeleteEmployee", "EmployeeBarbershop", new { id = employee.Id })" method="post">
+                                <button class="btn btn-lg btn-dark" id="Delete" style="background-color: black; color: white;
+                                border-radius: 5px; width: 5.5vw; height: 3.5vh; font-size: 1.8vb; display: flex; justify-content: center; align-items: center;">
+                                    Delete
+                                </button>
+                            </form>
+
+                        </td>
+                    </tr>
+
+            }
+            </tbody>
+>>>>>>> 567e7cf1f63ae71149b66fa64b89eb556ac251d5
     </table>
 </div>
 
