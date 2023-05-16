@@ -1,0 +1,202 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Administrare programări";
+}
+
+
+@using Booking.Web.Models
+@using Booking.Web.Models.Admin
+@using Booking.Web.Controllers
+@using System.Web.Script.Serialization;
+@model AppointmentBooking
+
+@{
+    var serializer = new JavaScriptSerializer();
+    var Model = serializer.Deserialize<AppointmentBooking>(ViewBag.ModelJson);
+}
+
+<div style=" position: absolute; right: 60%; top: 15%; ">
+    <label for="Date" style="font-weight: bold; display: block; font-size: 1.5em; margin-bottom: 0.2em;">Selectează ziua</label>
+    <div class="input-group" style="width: 15vw; height: 5vh;">
+
+        <input onchange="showSchedule()" type="date" id="date-select" class="form-control bg-white text-black border-gray custom-date-picker" style="border-radius: 0.5em;">
+        <div class="input-group-append">
+
+        </div>
+    </div>
+
+</div>
+
+<div class="table-responsive" style=" position: absolute; right: 36%; top: 28%; width: 40vw;">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Ora</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Telefon</th>
+                <th style="width: 8vw"> </th>
+            </tr>
+        </thead>
+        <tbody id="schedule-body">
+        </tbody>
+    </table>
+</div>
+
+
+<input type="hidden" id="model-json" value="@ViewBag.ModelJson" />
+
+<script>
+    function showSchedule() {
+        var scheduleBody = document.getElementById("schedule-body");
+
+        scheduleBody.innerHTML = "";
+
+        var date = document.getElementById("date-select").value;
+
+        //var empployeeId;
+        var employeeId = document.cookie.split(";")[0].split("=")[2].split("&")[0];
+
+
+        var modelJson = document.getElementById("model-json").value;
+        var Model = JSON.parse(modelJson);
+
+        var selectedAppointments = [];
+
+        Model.appointments.forEach(appointment => {
+            if (appointment.EmployeeId.toString() === employeeId && appointment.Date === date) {
+               selectedAppointments.push(appointment);
+            }
+        });
+
+        selectedAppointments.sort((a, b) => {
+            const hourA = parseInt(a.Time.split(":")[0]);
+            const hourB = parseInt(b.Time.split(":")[0]);
+
+            if (hourA < hourB) {
+                return -1;
+            }
+            if (hourA > hourB) {
+                return 1;
+            }
+            // If hours are equal, the order remains unchanged
+        });
+
+        // Process the selectedAppointments list
+        selectedAppointments.forEach(appointment => {
+            var row = document.createElement("tr");
+            var hourCell = document.createElement("td");
+            var firstNameCell = document.createElement("td");
+            var lastNameCell = document.createElement("td");
+            var numberCell = document.createElement("td");
+            var deleteCell = document.createElement("td");
+            var deleteButton = document.createElement("button");
+
+
+            hourCell.innerHTML = appointment.Time;
+            firstNameCell.innerHTML = appointment.FirstName;
+            lastNameCell.innerHTML = appointment.LastName;
+            numberCell.innerHTML = appointment.Phone;
+
+            deleteButton.className = "btn btn-lg btn-dark";
+            deleteButton.style.backgroundColor = "black";
+            deleteButton.style.color = "white";
+            deleteButton.style.borderRadius = "5px";
+            deleteButton.style.width = "5.5vw";
+            deleteButton.style.height = "3.5vh";
+            deleteButton.style.fontSize = "1.8vb";
+            deleteButton.style.display = "flex";
+            deleteButton.style.justifyContent = "center";
+            deleteButton.style.alignItems = "center";
+            deleteButton.innerHTML = "Delete";
+
+            deleteButton.addEventListener("click", function() {
+                var form = document.createElement("form");
+                form.method = "post";
+                form.action = "@Url.Action("RmAppointment", "Schedule")";
+
+                var hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "Id";
+                hiddenInput.value = appointment.Id;
+                form.appendChild(hiddenInput);
+                document.body.appendChild(form);
+                form.submit();
+            });
+
+            deleteCell.appendChild(deleteButton);
+
+            row.appendChild(hourCell);
+            row.appendChild(firstNameCell);
+            row.appendChild(lastNameCell);
+            row.appendChild(numberCell);
+            row.appendChild(deleteCell);
+            scheduleBody.appendChild(row);
+        });
+
+
+
+        // Display an alert with the userId
+        /*
+        var dateSelect = document.getElementById("barbershop-select");
+        var data = dataSelect.value;
+
+        var employeeSelect = document.getElementById("employee-select");
+
+        var barbershopId = barbershopSelectedOption.value;
+
+
+
+        // find the selected barbershop from the model
+        var selectedBarbershop = Model.barbershops.find(b => b.Id.toString() === barbershopId);
+
+        if (selectedBarbershop) {
+            // display the services of the selected barbershop
+            employeeSelect.innerHTML = "";
+
+            selectedBarbershop.Employees.forEach(employee => {
+
+                var option = document.createElement("option");
+                option.className = "select-menu options";
+                option.value = employee.Id;
+                option.text = employee.FirstName;
+                employeeSelect.add(option);
+            });
+
+            //    servicesTable.style.display = "block";
+        } else {
+            // hide the services table if no barbershop is selected
+            //   servicesTable.style.display = "none";
+        }
+        showServices();
+        */
+    }
+
+    function loadTime() {
+        var now = new Date();
+        var options = { timeZone: "Europe/Chisinau" };
+        var formattedDate = now.toLocaleDateString(undefined, options);
+
+        var maxDate = new Date();
+        maxDate.setMonth(maxDate.getMonth() + 1);
+        maxDate.setDate(now.getDate());
+        maxDate.setHours(0, 0, 0, 0);
+        maxDate.setTime(maxDate.getTime() - maxDate.getTimezoneOffset() * 60 * 1000);
+        var formattedMaxDate = maxDate.toISOString().slice(0, 10);
+
+        var minDate = new Date();
+        minDate.setHours(0, 0, 0, 0);
+        minDate.setTime(minDate.getTime() - minDate.getTimezoneOffset() * 60 * 1000);
+        var formattedMinDate = minDate.toISOString().slice(0, 10);
+
+        document.getElementById("date-select").value = formattedMinDate;
+        document.getElementById("date-select").min = formattedMinDate;
+        document.getElementById("date-select").max = formattedMaxDate;
+    }
+
+    window.onload = function () {
+        loadTime();
+
+        showSchedule();
+    };
+</script>

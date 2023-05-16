@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Vizualizare setari";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using Booking.Web.Models
+@using Booking.Web.Models.Admin
+@using Booking.Web.Controllers
+@using System.Web.Script.Serialization;
+@model ServiceBarbEmp
+@{
+    var serializer = new JavaScriptSerializer();
+    var Model = serializer.Deserialize<ServiceBarbEmp>(ViewBag.ModelJson);
+}
+
+<div class="table-responsive" style=" position: absolute; right:7.5%; top:20%; width: 65vw;">
+    <table class="table table-striped table-hover">
+
+        <thead>
+            <tr>
+                <th>Nume BarberShop</th>
+                <th>Locatie</th>
+                <th>Angajati</th>
+                <th>Servicii</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var barbershop in Model.barbershops)
+            {
+                <tr>
+                    <td>
+                       @barbershop.Name
+                    </td>
+                    <td>
+                        @barbershop.Address
+                    </td>
+                    <td>
+                        @{
+                            foreach (var employee in barbershop.Employees)
+                            {
+                                <p>
+                                    @employee.FirstName
+                                    @employee.LastName
+                                    <br>
+                                </p>
+                            }
+                        }
+                    </td>
+                    <td>
+                        @{
+                            foreach (var employee in barbershop.Services)
+                            {
+                                <p>
+                                    (@employee.ServiceType)
+                                    @employee.ServiceName
+                                    <br>
+                                </p>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

@@ -19,22 +19,25 @@ namespace Booking.Persistance.Repository
             _context = context;
         }
 
-        public void Add(UserAppointment item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public async Task<List<UserAppointment>> GetAll()
         {
             var test = await _context.UserAppointments
              .ToListAsync();
 
             return test;
+        }
+        public void Add(UserAppointment item)
+        {
+            _context.UserAppointments.Add(item);
+        }
+
+        public void Delete(Guid id)
+        {
+            var appointment = _context.UserAppointments.Find(id);
+
+            if (appointment != null)
+                _context.UserAppointments.Remove(appointment);
         }
 
         public Task<UserAppointment> GetById(Guid id)
