@@ -7,6 +7,7 @@ Capturi de ecran
  https://ibb.co/BwgX4sN
  https://ibb.co/k9hH27y
  https://ibb.co/stM9qXx
+![image](https://github.com/ArnautVasile/booking/assets/24511509/62a5bdbb-5177-461a-a5c8-c9078e88b654)
 
 Development/Setup
 Cerințe de dezvoltare
