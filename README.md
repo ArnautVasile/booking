@@ -26,7 +26,7 @@ Pentru Myssql e nevoie de sql server 2019, Sql managment studio 2019.<br>
 
 ### Echipă:
 Echipa care a contribuit la dezvoltarea proiectului Booking Barbershop este:<br>
-Arnaut Vasile<br>
+* Arnaut Vasile<br>
 Buzdugan Octavian<br>
 Caldare Sorin<br>
 Botnarenco Eleodor<br>
