@@ -10,7 +10,7 @@ Capturi de ecran
 ![image](https://github.com/ArnautVasile/booking/assets/24511509/f91bed7b-51b0-4be3-abf5-36f96681df94)
 
 
-Development/Setup
+Development/Setup <br>
 Cerințe de dezvoltare
 Pentru a putea dezvolta și porni proiectul Booking Barbershop, asigurați-vă că aveți următoarele:
 .NET Framework 4.5
