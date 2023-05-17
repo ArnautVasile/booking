@@ -17,12 +17,12 @@ Pentru a putea dezvolta și porni proiectul Booking Barbershop, asigurați-vă c
 Microsoft SQL Server<br>
 <br>
 Configurare<br>
-Clonează repository-ul: git clone https://github.com/ArnautVasile/booking.git
-Deschide soluția proiectului în Visual Studio.
-Asigură-te că ai configurat conexiunea la baza de date MSSQL în fișierul de configurare al aplicației.
-Compilează și rulează aplicația în Visual Studio.
-Pentru  e nevoie ca proiectul sa fie rulat pe versiunea de .net 4.5.
-Pentru Myssql e nevoie de sql server 2019, Sql managment studio 2019.
+Clonează repository-ul: git clone https://github.com/ArnautVasile/booking.git<br>
+Deschide soluția proiectului în Visual Studio.<br>
+Asigură-te că ai configurat conexiunea la baza de date MSSQL în fișierul de configurare al aplicației.<br>
+Compilează și rulează aplicația în Visual Studio.<br>
+Pentru  e nevoie ca proiectul sa fie rulat pe versiunea de .net 4.5.<br>
+Pentru Myssql e nevoie de sql server 2019, Sql managment studio 2019.<br>
 
 <br>
 Echipă<br>
