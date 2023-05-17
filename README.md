@@ -24,8 +24,7 @@ Compilează și rulează aplicația în Visual Studio.<br>
 Pentru  e nevoie ca proiectul sa fie rulat pe versiunea de .net 4.5.<br>
 Pentru Myssql e nevoie de sql server 2019, Sql managment studio 2019.<br>
 
-<br>
-### Echipă:<br>
+### Echipă:
 Echipa care a contribuit la dezvoltarea proiectului Booking Barbershop este:<br>
 Arnaut Vasile<br>
 Buzdugan Octavian<br>
