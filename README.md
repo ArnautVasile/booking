@@ -1,5 +1,5 @@
 
-Booking Barbershop <br>
+Booking Barbershop <br><br>
 Booking Barbershop este o aplicație web scrisă în .NET 4.5, care facilitează programarea și rezervarea serviciilor de coafură și tuns la un salon de înfrumusețare pentru bărbați. Aplicația permite utilizatorilor să aleagă dintr-o gamă variată de servicii, să selecteze un stilist preferat și să programeze o întâlnire în funcție de disponibilitatea acestuia.
 
 Capturi de ecran
